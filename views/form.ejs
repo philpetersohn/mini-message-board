@@ -7,14 +7,21 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <% if (errors.length > 0) { %>
+      <ul>
+        <% errors.forEach((error) => { %>
+          <li><%= error %></li>
+        <% }) %>
+      </ul>
+    <% } %>
     <form method="POST" action="/new">
       <div>
         <label for="messageUser">Author</label>
-        <input id="messageUser" name="messageUser" type="text" required />
+        <input id="messageUser" name="messageUser" type="text" value="<%= messageUser %>" />
       </div>
       <div>
         <label for="messageText">Message</label>
-        <input id="messageText" name="messageText" type="text" required />
+        <input id="messageText" name="messageText" type="text" value="<%= messageText %>" />
       </div>
       <button type="submit">Submit</button>
     </form>

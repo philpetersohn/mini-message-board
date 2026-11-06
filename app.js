@@ -1,6 +1,6 @@
 import express from "express";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import indexRouter from "./routes/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,6 +15,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 
 const port = 3000;
-app.listen(port, () => {
-  console.log(`Mini Message Board listening on port ${port}`);
-});
+const entryPath = process.argv[1];
+const isDirectRun =
+  entryPath && import.meta.url === pathToFileURL(path.resolve(entryPath)).href;
+
+if (isDirectRun) {
+  app.listen(port, () => {
+    console.log(`Mini Message Board listening on port ${port}`);
+  });
+}
+
+export default app;
