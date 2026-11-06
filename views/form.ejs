@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form method="POST" action="/new">
+      <div>
+        <label for="messageUser">Author</label>
+        <input id="messageUser" name="messageUser" type="text" required />
+      </div>
+      <div>
+        <label for="messageText">Message</label>
+        <input id="messageText" name="messageText" type="text" required />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <p><a href="/">Back to messages</a></p>
+  </body>
+</html>
