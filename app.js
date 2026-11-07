@@ -14,13 +14,13 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const entryPath = process.argv[1];
 const isDirectRun =
   entryPath && import.meta.url === pathToFileURL(path.resolve(entryPath)).href;
 
 if (isDirectRun) {
-  app.listen(port, () => {
+  app.listen(port, "0.0.0.0", () => {
     console.log(`Mini Message Board listening on port ${port}`);
   });
 }
